@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Sandip Mane']
   spec.email         = ['sandip2490@gmail.com']
 
-  spec.summary       = 'Adds sequencing abilities to the ActiveRecord Models'
-  spec.description   = 'This gem can be useful in managing `sequence` of the records in the database. Check the homepage for more information.'
+  spec.summary       = 'Adds sequencing abilities to the ActiveRecord Models.'
+  spec.description   = 'A light-weight simple to use gem to manage sequencing of records in the database. Check the homepage for more information.'
   spec.homepage      = "https://github.com/sandip-mane/sequenceable"
   spec.license       = 'MIT'
 
