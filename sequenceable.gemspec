@@ -10,15 +10,13 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Sandip Mane']
   spec.email         = ['sandip2490@gmail.com']
 
-  spec.summary       = 'Write a short summary, because RubyGems requires one.'
-  spec.description   = 'Write a longer description or delete this line.'
-  spec.homepage      = "https://github.com/"
+  spec.summary       = 'Adds sequencing abilities to the ActiveRecord Models'
+  spec.description   = 'This gem can be useful in managing `sequence` of the records in the database. Check the homepage for more information.'
+  spec.homepage      = "https://github.com/sandip-mane/sequenceable"
   spec.license       = 'MIT'
 
-  spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = "https://github.com/"
+  spec.metadata['source_code_uri'] = "https://github.com/sandip-mane/sequenceable"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
