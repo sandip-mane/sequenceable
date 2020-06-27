@@ -1,0 +1,41 @@
+# frozen_string_literal: true
+
+
+##
+# Models with global scope for sequencing
+#
+class Independent < ActiveRecord::Base
+  acts_in_sequence
+end
+
+class IndependentCustomColumnName < ActiveRecord::Base
+  acts_in_sequence column_name: :display_order
+end
+
+
+##
+# Models with scoped sequencing
+#
+class Parent < ActiveRecord::Base
+  has_many :children, dependent: :destroy
+  has_many :reversed_children, dependent: :destroy
+  has_many :custom_column_name_children, dependent: :destroy
+end
+
+class Child < ActiveRecord::Base
+  acts_in_sequence scope: :parent
+
+  belongs_to :parent
+end
+
+class ReversedChild < ActiveRecord::Base
+  acts_in_sequence scope: :parent, default_order: :desc
+
+  belongs_to :parent
+end
+
+class CustomColumnNameChild < ActiveRecord::Base
+  acts_in_sequence scope: :parent, column_name: :display_order
+
+  belongs_to :parent
+end
