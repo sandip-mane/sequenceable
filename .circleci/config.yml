@@ -9,5 +9,17 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
-      - run: bin/setup
-      - run: rake test
+
+      - run:
+          name: Install gem dependencies
+          command: |
+            gem install bundler
+            bundle check || bundle install --jobs=6 --retry=3 --path vendor/bundle
+
+      - run:
+          name: Run rubocop check
+          command: bundle exec rubocop
+
+      - run:
+          name: Run tests
+          command: bundle exec rake test
