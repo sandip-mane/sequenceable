@@ -15,8 +15,7 @@ module Sequenceable
         for_name = sequencing_configuration[:scope]
         return self.class if for_name.blank?
 
-        for_assoc = self.class.reflect_on_all_associations(:belongs_to).find { |x| x.name == for_name }
-        self.class.where(for_assoc.foreign_key => self[for_assoc.foreign_key])
+        self.class.where(for_name => self.send(for_name))
       end
   end
 end
