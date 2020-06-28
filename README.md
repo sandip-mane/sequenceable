@@ -3,6 +3,8 @@
 Adds sequencing abilities to the ActiveRecord Models.
 This gem can be useful in managing `sequence` of the records in the database.
 
+The `sequence` will be auto-generated, when the records are created.
+
 ## Usage
 
 ### Install
