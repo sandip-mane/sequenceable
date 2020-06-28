@@ -11,17 +11,6 @@ jobs:
           name: Build gem
           command: gem build sequenceable
 
-  test:
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - gem-cache-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-
       - run:
           name: Install gem dependencies
           command: |
@@ -29,11 +18,6 @@ jobs:
             bundle check || bundle install --jobs=6 --retry=3 --path vendor/bundle
 
       - run: bundle install
-
-      - save_cache:
-          key: gem-cache-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
 
       - run:
           name: Run rubocop check
@@ -45,12 +29,3 @@ jobs:
 
       - store_test_results:
           path: test/reports
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
