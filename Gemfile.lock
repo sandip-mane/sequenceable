@@ -2,11 +2,27 @@ PATH
   remote: .
   specs:
     sequenceable (0.1.1)
+      activerecord
+      activesupport
 
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (6.0.3.2)
+      activesupport (= 6.0.3.2)
+    activerecord (6.0.3.2)
+      activemodel (= 6.0.3.2)
+      activesupport (= 6.0.3.2)
+    activesupport (6.0.3.2)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+      zeitwerk (~> 2.2, >= 2.2.2)
     ast (2.4.1)
+    concurrent-ruby (1.1.6)
+    i18n (1.8.3)
+      concurrent-ruby (~> 1.0)
     minitest (5.14.1)
     parallel (1.19.2)
     parser (2.7.1.4)
@@ -28,12 +44,18 @@ GEM
       parser (>= 2.7.0.1)
     ruby-progressbar (1.10.1)
     sqlite3 (1.4.2)
+    thread_safe (0.3.6)
+    tzinfo (1.2.7)
+      thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
+  activesupport
   bundler (~> 2.0)
   minitest (~> 5.0)
   rake (>= 12.3.3)
