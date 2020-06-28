@@ -8,6 +8,7 @@ GEM
   specs:
     minitest (5.14.1)
     rake (13.0.1)
+    sqlite3 (1.4.2)
 
 PLATFORMS
   ruby
@@ -17,6 +18,7 @@ DEPENDENCIES
   minitest (~> 5.0)
   rake (>= 12.3.3)
   sequenceable!
+  sqlite3
 
 BUNDLED WITH
    2.1.4
