@@ -1,15 +1,18 @@
 version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - test
 
 jobs:
-  minitest:
+  test:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
+
     executor: ruby/default
-    environment:
-      RAILS_ENV: "test"
-      RACK_ENV: "test"
+
     steps:
       - checkout
 
