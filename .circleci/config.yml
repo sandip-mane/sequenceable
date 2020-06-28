@@ -9,22 +9,6 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
-      - ruby/install-deps
-      - ruby/bundle-install
-
-  test:
-    docker:
-      - image: cimg/ruby:2.7-node
-    steps:
-      - checkout
-      - ruby/install-deps
-      - ruby/rake-test
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - run: gem install bundler
+      - run: bundle install
+      - run: rake test
