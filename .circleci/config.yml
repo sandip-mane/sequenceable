@@ -1,15 +1,24 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@0.1.2
 
 jobs:
-  build:
+  minitest:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
     executor: ruby/default
+    environment:
+      RAILS_ENV: "test"
+      RACK_ENV: "test"
     steps:
       - checkout
+
+      - run: bundle install
+
+      # Static Code Analysis
+      - run: bundle exec rubocop
+
+      # Unit tests
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          shell: /bin/bash
+          command: CI=true bundle exec rails test
