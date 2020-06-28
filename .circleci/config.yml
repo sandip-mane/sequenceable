@@ -11,8 +11,6 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
 
-    executor: ruby/default
-
     steps:
       - checkout
 
