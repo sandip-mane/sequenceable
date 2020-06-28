@@ -28,6 +28,8 @@ class SequenceableTest < Minitest::Test
   # Tests with global scope for sequencing
   #
   def test_that_new_sequence_is_assigned_to_independent_records
+    Independent.delete_all
+
     record_1 = Independent.create(name: "Record 1")
     record_2 = Independent.create(name: "Record 2")
     record_3 = Independent.create(name: "Record 3")
@@ -68,6 +70,38 @@ class SequenceableTest < Minitest::Test
 
     assert_equal 1, child_21.sequence
     assert_equal 2, child_22.sequence
+  end
+
+  def test_that_new_sequence_is_assigned_to_records_with_scope_id
+    parent = Parent.create(name: "Parent 1")
+
+    child_1 = parent.scope_id_children.create(name: "Child 1")
+    child_2 = parent.scope_id_children.create(name: "Child 2")
+    child_3 = parent.scope_id_children.create(name: "Child 3")
+
+    assert_equal 1, child_1.sequence
+    assert_equal 2, child_2.sequence
+    assert_equal 3, child_3.sequence
+  end
+
+  def test_that_new_sequence_is_assigned_to_records_with_string_scope
+    StringScopeIndependent.delete_all
+
+    car_1 = StringScopeIndependent.create(name: "Car")
+    car_2 = StringScopeIndependent.create(name: "Car")
+    car_3 = StringScopeIndependent.create(name: "Car")
+
+    truck_1 = StringScopeIndependent.create(name: "Truck")
+    truck_2 = StringScopeIndependent.create(name: "Truck")
+    truck_3 = StringScopeIndependent.create(name: "Truck")
+
+    assert_equal 1, car_1.sequence
+    assert_equal 2, car_2.sequence
+    assert_equal 3, car_3.sequence
+
+    assert_equal 1, truck_1.sequence
+    assert_equal 2, truck_2.sequence
+    assert_equal 3, truck_3.sequence
   end
 
   def test_that_new_scoped_sequence_is_assigned_for_custom_column

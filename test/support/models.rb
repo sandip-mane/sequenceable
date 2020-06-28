@@ -16,14 +16,30 @@ end
 ##
 # Models with scoped sequencing
 #
+class StringScopeIndependent < ActiveRecord::Base
+  self.table_name = "independents"
+
+  acts_in_sequence scope: :name
+end
+
 class Parent < ActiveRecord::Base
   has_many :children, dependent: :destroy
+  has_many :scope_id_children, dependent: :destroy
+  has_many :string_scope_children, dependent: :destroy
   has_many :reversed_children, dependent: :destroy
   has_many :custom_column_name_children, dependent: :destroy
 end
 
 class Child < ActiveRecord::Base
   acts_in_sequence scope: :parent
+
+  belongs_to :parent
+end
+
+class ScopeIdChild < ActiveRecord::Base
+  self.table_name = "children"
+
+  acts_in_sequence scope: :parent_id
 
   belongs_to :parent
 end

@@ -51,6 +51,14 @@ class Task < ActiveRecord::Base
 end
 ```
 
+You can scope on any column ( Yeah, thats right! )
+
+```ruby
+class Task < ActiveRecord::Base
+  acts_in_sequence scope :name
+end
+```
+
 #### :column_name
 With `:column_name` we can use custom column names instead of using `sequence`.
 
