@@ -3,7 +3,6 @@ PATH
   specs:
     sequenceable (0.1.1)
       activerecord
-      activesupport
 
 GEM
   remote: https://rubygems.org/
@@ -54,8 +53,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord
-  activesupport
   bundler (~> 2.0)
   minitest (~> 5.0)
   rake (>= 12.3.3)
