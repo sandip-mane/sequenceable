@@ -1,0 +1,28 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    steps:
+      - checkout
+
+      - run:
+          name: Build gem
+          command: gem build sequenceable
+
+      - run:
+          name: Install gem dependencies
+          command: |
+            gem install bundler
+            bundle check || bundle install --jobs=6 --retry=3 --path vendor/bundle
+
+      - run: bundle install
+
+      - run:
+          name: Run rubocop check
+          command: bundle exec rubocop
+
+      - run:
+          name: Run tests
+          command: bundle exec rake test
