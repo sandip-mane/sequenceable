@@ -1,25 +1,15 @@
 version: 2.1
-
-workflows:
-  version: 2
-  commit:
-    jobs:
-      - test
+orbs:
+  ruby: circleci/ruby@0.1.2
 
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
-
+    executor: ruby/default
     steps:
       - checkout
-
-      - run: bundle
-
-      # Static Code Analysis
-      - run: rubocop
-
-      # Unit tests
       - run:
-          shell: /bin/bash
-          command: CI=true bundle exec rails test
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
