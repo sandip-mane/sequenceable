@@ -14,10 +14,10 @@ jobs:
     steps:
       - checkout
 
-      - run: bundle install
+      - run: bundle
 
       # Static Code Analysis
-      - run: bundle exec rubocop
+      - run: rubocop
 
       # Unit tests
       - run:
