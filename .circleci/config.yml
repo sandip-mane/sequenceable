@@ -16,6 +16,8 @@ jobs:
             gem install bundler
             bundle check || bundle install --jobs=6 --retry=3 --path vendor/bundle
 
+      - run: bundle install
+
       - run:
           name: Run rubocop check
           command: bundle exec rubocop
