@@ -26,6 +26,3 @@ jobs:
       - run:
           name: Run tests
           command: bundle exec rake test
-
-      - store_test_results:
-          path: test/reports

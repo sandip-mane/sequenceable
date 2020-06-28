@@ -1,1 +1,0 @@
-# Test reports will be stored in this folder
