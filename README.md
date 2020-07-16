@@ -1,12 +1,14 @@
 # Sequenceable
 
 [![Gem Version](https://badge.fury.io/rb/sequenceable.svg)](https://badge.fury.io/rb/sequenceable)
-[![sandip-mane](https://circleci.com/gh/sandip-mane/sequenceable.svg?style=shield)](https://app.circleci.com/pipelines/github/sandip-mane/sequenceable?branch=master)
+[![sandip-mane](https://circleci.com/gh/sandip-mane/sequenceable/tree/master.svg?style=shield)](https://app.circleci.com/pipelines/github/sandip-mane/sequenceable?branch=master)
 
-Adds sequencing abilities to the ActiveRecord Models.
-This gem can be useful in managing `sequence` of the records in the database.
+Adds sequencing to the database records.
 
-The `sequence` will be auto-generated, when the records are created.
+Often we want to keep a record `sequence`/`order` in the database. This gem takes care of adding sequence (auto-incremented) to newly added records.
+
+Tough its not just auto-increment, you can do [scoped sequencing](#scope) and more with this gem.
+
 
 ## Usage
 
