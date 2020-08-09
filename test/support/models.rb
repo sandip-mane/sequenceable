@@ -28,10 +28,21 @@ class Parent < ActiveRecord::Base
   has_many :string_scope_children, dependent: :destroy
   has_many :reversed_children, dependent: :destroy
   has_many :custom_column_name_children, dependent: :destroy
+  has_many :children_with_deleted_scopes, dependent: :destroy
 end
 
 class Child < ActiveRecord::Base
   acts_in_sequence scope: :parent
+
+  belongs_to :parent
+end
+
+class ChildrenWithDeletedScope < ActiveRecord::Base
+  self.table_name = "children"
+
+  acts_in_sequence scope: :parent
+
+  scope :without_deleted, -> { where(deleted_at: nil) }
 
   belongs_to :parent
 end
