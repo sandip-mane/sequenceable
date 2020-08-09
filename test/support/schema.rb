@@ -30,9 +30,10 @@ ActiveRecord::Schema.define do
   end
 
   create_table :children, force: true do |t|
-    t.string  :name
-    t.integer :sequence
-    t.integer :parent_id
+    t.string    :name
+    t.integer   :sequence
+    t.integer   :parent_id
+    t.datetime  :deleted_at
 
     t.timestamps
   end

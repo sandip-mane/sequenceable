@@ -72,6 +72,12 @@ class SequenceableTest < Minitest::Test
     assert_equal 2, child_22.sequence
   end
 
+  def test_that_scope_warning_is_not_shown
+    parent = Parent.create(name: "Parent 1")
+    child = parent.children_with_deleted_scopes.without_deleted.create(name: "Child 11")
+    assert_equal 1, child.sequence
+  end
+
   def test_that_new_sequence_is_assigned_to_records_with_scope_id
     parent = Parent.create(name: "Parent 1")
 

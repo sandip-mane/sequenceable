@@ -15,7 +15,7 @@ module Sequenceable
         for_name = sequencing_configuration[:scope]
         return self.class if for_name.blank?
 
-        self.class.where(for_name => self.send(for_name))
+        self.class.default_scoped.where(for_name => self.send(for_name))
       end
   end
 end
